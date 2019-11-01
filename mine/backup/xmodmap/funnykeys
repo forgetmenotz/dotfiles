@@ -1,0 +1,55 @@
+clear lock
+clear control
+clear shift
+clear mod5
+
+keycode 10 = 1 exclam exclam exclam 1 exclam exclamdown onesuperior
+keycode 11 = 2 quotedbl quotedbl quotedbl 2 quotedbl oneeighth twosuperior
+keycode 12 = 3 sterling sterling sterling 3 sterling threesuperior
+keycode 20 = minus underscore 7 7
+keycode 21 = equal plus 8 8
+keycode 22 = BackSpace BackSpace
+keycode 24 = q Q bracketleft Q 4 dollar at
+keycode 25 = w W bracketright W 5 percent lstroke
+keycode 26 = e E parenleft E 6 asciicircum
+keycode 27 = r R parenright R paragraph registered paragraph
+keycode 29 = Shift_L Shift_L bracketleft braceleft
+keycode 30 = Shift_L Shift_L bracketright braceright
+keycode 31 = Shift_L Shift_L semicolon colon
+keycode 32 = y Y y Y
+keycode 33 = u U BackSpace BackSpace
+keycode 34 = i I braceleft bracketleft
+keycode 35 = o O braceright bracketright
+keycode 36 = p P Return Return
+keycode 38 = a A numbersign A 7 ampersand
+keycode 39 = s S apostrophe S 8 asterisk ssharp
+keycode 40 = d D semicolon D 9 parenleft eth
+keycode 43 = Shift_L Shift_L 
+keycode 44 = Shift_L Shift_L 
+keycode 45 = Shift_L Shift_L 
+keycode 46 = h H h H h H
+keycode 47 = j J colon colon j J
+keycode 48 = k K at at k K
+keycode 51 = l L asciitilde asciitilde l L
+keycode 52 = z Z less less k K
+keycode 53 = x X greater greater x X
+keycode 54 = c C question question c C
+
+keycode 56 = Shift_L Shift_L 
+keycode 57 = Shift_L Shift_L comma less
+keycode 58 = Shift_L Shift_L period greater
+keycode 59 = b B comma less
+keycode 60 = n N period greater
+keycode 61 = m M slash question
+
+keycode 62 = Shift_L Shift_L
+keycode 64 = Mode_switch Mode_switch Escape
+keycode 65 = space space BackSpace BackSpace BackSpace BackSpace BackSpace BackSpace
+keycode 66 = Alt_L Meta_L Alt_L Meta_L
+keycode 107 = Escape
+keycode 108 = ISO_Level3_Shift NoSymbol
+keycode 999 = Escape
+add control = Control_L 
+
+add shift = Shift_L Shift_R
+add mod5 = ISO_Level3_Shift

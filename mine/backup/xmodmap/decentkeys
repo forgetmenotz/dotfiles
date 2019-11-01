@@ -1,0 +1,25 @@
+clear lock
+clear control
+clear mod1
+clear shift
+clear mod5
+
+keycode 22 = BackSpace BackSpace BackSpace BackSpace
+keycode 23 = Tab ISO_Left_Tab Tab ISO_Left_Tab 
+keycode 36 = Escape
+keycode 49 = Tab ISO_Left_Tab ISO_Left_Tab ISO_Left_Tab
+keycode 47 = Shift_L semicolon semicolon colon
+keycode 48 = Shift_R NoSymbol apostrophe at
+keycode 50 = Shift_L NoSymbol Shift_L
+keycode 62 = Shift_R NoSymbol Shift_R
+keycode 48 = Return 
+keycode 61 = slash question slash question dead_belowdot dead_abovedot dead_belowdot
+keycode 64 = Mode_switch
+keycode 65 = space BackSpace space space BackSpace BackSpace
+keycode 66 = Escape BackSpace
+keycode 107 = Caps_Lock
+
+add control = Control_L
+add mod1 = Alt_L Meta_L Alt_L Meta_L
+! add mod5 = Mode_switch 
+add Shift = Shift_L Shift_R
