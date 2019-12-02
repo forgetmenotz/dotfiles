@@ -14,17 +14,19 @@ general {
   color_bad = "#FF0000"
 interval="5"
 }
-order += "cpu_usage"
+#order += "cpu_usage"
 order += "wireless _first_"
-order += "ethernet _first_"
+#order += "ethernet _first_"
 order += "battery all"
-order += "load"
+#order += "load"
 order += "volume master"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%essid)"
-        format_down = "W: down"
+        #format_up = "W: (%essid)"
+        #format_down = "W: down"
+				format_up = "W"
+        format_down = "x"
 }
 
 ethernet _first_ {
@@ -34,7 +36,8 @@ ethernet _first_ {
 }
 
 battery all {
-        format = "%status %percentage / %remaining"
+        format = "%status %percentage"
+# / %remaining"
         integer_battery_capacity = true
         last_full_capacity = true
         status_chr = "⚡"
@@ -44,16 +47,17 @@ battery all {
 }
 
 tztime local {
-        format = "(%Y-%m-%d) %H:%M:%S "
+        format = "%H:%M"
+#(%Y-%m-%d)
 }
 
-load {
-        format = "%1min"
-}
+#load {
+#        format = "%1min"
+#}
 
-disk "/" {
-        format = "%avail"
-}
+#disk "/" {
+#        format = "%avail"
+#}
 
 volume master {
         format = "♪: %volume"
@@ -68,8 +72,3 @@ cpu_usage {
 	max_threshold = "70"
 	degraded_threshold = "40"
 }
-
-load {
-  format = "%1min"
-}
-
