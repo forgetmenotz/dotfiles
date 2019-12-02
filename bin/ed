@@ -1,0 +1,12 @@
+function ed {
+if [ $1 ]; then 
+	iscmd="$(find . | fzf --print0 -q $1)"
+else
+	iscmd="$(find . | fzf --print0 $1)" 
+fi
+function wr {
+if [ $1 ]; then 
+	iscmd="$(find . | fzf --print0 -q $1)"
+else
+	iscmd="$(find . | fzf --print0 $1)" 
+fi

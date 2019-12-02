@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! [[ "$(pgrep -il emacs)" ]]; then
+	emacs --daemon
+fi
+
+emacsclient -nw $@
