@@ -2,11 +2,47 @@
 
 case $1 in
 	moderight)
-		xcape -e 'Control_L=Escape'
-		xcape -e 'Mode_switch=colon'
+		xcape -s -e 'Control_L=Return'
+		xcape -e 'ISO_Level3_Shift=Escape'
+		xcape -e 'Shift_L=slash'
 		exit 0 ;;
 	modeleft)
 		xcape -e 'Control_L=Return'
 		xcape -e 'Mode_switch=Escape'
+		exit 0 ;;
+	altmodeleft)
+		xcape -e 'Control_L=Return'
+		xcape -e 'Mode_switch=Escape'
+		xcape -e 'ISO_Level3_Shift=colon'
+		exit 0 ;;
+	pgmode)
+		xcape -s -e 'ISO_Level3_Shift=Return'
+		xcape -e 'Shift_L=Escape'
+		xcape -e 'Control_L=Escape'
+		xcape -e 'Mode_switch=colon'
+		exit 0 ;;
+	isomode)
+		xcape -s -e 'ISO_Level3_Shift=Return'
+		xcape -e 'Shift_L=Escape'
+		xcape -e 'Control_L=Escape'
+		xcape -s -e 'Mode_switch=backslash'
+		exit 0 ;;
+	funnykeys3)
+		xcape -s -e 'ISO_Level3_Shift=Return'
+		xcape -e 'Shift_L=Escape'
+		xcape -e 'Control_L=Escape'
+		xcape -s -e 'Mode_switch=bar'
+		exit 0 ;;
+	shiftmode)
+		xcape -s -e 'ISO_Level3_Shift=Return'
+		xcape -e 'Shift_L=Escape'
+		xcape -e 'Control_L=Escape'
+		exit 0 ;;
+	spacemode)
+		xcape -s -e 'ISO_Level3_Shift=Return'
+		xcape -s -e 'Super_L=space'
+		xcape -s -e 'Mode_switch=bar'
+		xcape -e 'Shift_L=Escape'
+		xcape -e 'Control_L=Escape'
 		exit 0 ;;
 esac

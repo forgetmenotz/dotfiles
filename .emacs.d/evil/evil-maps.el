@@ -339,7 +339,7 @@
 ;;; Visual state
 
 (define-key evil-visual-state-map "a" 'evil-append)
-(define-key evil-visual-state-map "i" 'evil-insert)
+(define-key evil-visual-state-map "o" 'evil-insert)
 (define-key evil-visual-state-map "h" 'exchange-point-and-mark)
 (define-key evil-visual-state-map "H" 'evil-visual-exchange-corners)
 (define-key evil-visual-state-map "R" 'evil-change)
@@ -356,7 +356,7 @@
 ;;; Operator-Pending state
 
 (define-key evil-operator-state-map "a" evil-outer-text-objects-map)
-(define-key evil-operator-state-map "i" evil-inner-text-objects-map)
+(define-key evil-operator-state-map "o" evil-inner-text-objects-map)
 ;; (define-key evil-operator-state-map [escape] 'keyboard-quit)
 
 ;;; Insert state

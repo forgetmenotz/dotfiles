@@ -3,23 +3,72 @@ clear control
 clear mod1
 clear shift
 clear mod5
+clear mod4
 
-keycode 22 = BackSpace BackSpace BackSpace BackSpace
-keycode 23 = Tab ISO_Left_Tab Tab ISO_Left_Tab 
-keycode 36 = Escape
-keycode 49 = Tab ISO_Left_Tab ISO_Left_Tab ISO_Left_Tab
-keycode 47 = Shift_L semicolon semicolon colon
-keycode 48 = Shift_R NoSymbol apostrophe at
-keycode 50 = Shift_L NoSymbol Shift_L
+keycode 19 = 0 parenright parenright braceright degree braceright
+keycode 18 = 9 parenleft parenleft bracketright plusminus bracketright
+keycode 17 = 8 asterisk asterisk bracketleft trademark bracketleft
+keycode 16 = 7 ampersand ampersand braceleft seveneighths braceleft
+keycode 15 = 6 asciicircum asciicircum threequarters fiveeighths threequarters
+keycode 14 = 5 percent percent onehalf threeeighths onehalf
+keycode 13 = 4 dollar dollar EuroSign onequarter EuroSign
+keycode 12 = 3 sterling sterling threesuperior sterling threesuperior
+keycode 11 = 2 quotedbl quotedbl twosuperior oneeighth twosuperior
+keycode 10 = 1 exclam question onesuperior exclamdown onesuperior
+keycode 22 = Alt_L BackSpace
+keycode 23 = Tab ISO_Left_Tab Tab ISO_Left_Tab
+keycode 24 = q Q bracketleft 4 dollar at
+keycode 25 = w W bracketright 5 percent lstroke
+keycode 26 = e E parenleft 6 asciicircum
+keycode 27 = r R parenright R paragraph registered paragraph
+keycode 28 = t T braceleft T tslash Tslash tslash
+keycode 29 = y Y braceright Y leftarrow yen leftarrow
+keycode 30 = u U asciicircum U downarrow uparrow downarrow
+keycode 31 = i I Up braceleft bracketleft
+keycode 32 = o O grave O oslash Oslash oslash
+keycode 33 = p P apostrophe P thorn THORN thorn
+keycode 34 = apostrophe
+keycode 35 = Super_L
+keycode 36 = F6
+keycode 37 = Shift_L
+keycode 38 = a A underscore 7 ampersand
+keycode 56 = b B bar B rightdoublequotemark rightsinglequotemark 
+keycode 39 = s S minus S S S S S S 
+keycode 40 = d D plus 9 parenleft eth
+keycode 41 = f F equal f F dstroke ordfeminine dstroke
+keycode 42 = g G apostrophe G
+keycode 43 = h H numbersign H hstroke Hstroke hstroke
+keycode 44 = j J Left Left Left Left Left Left
+keycode 45 = k K Down Down Down Down Down Down
+keycode 46 = l L Right Right Right Right Right Right
+keycode 49 = grave notsign grave notsign bar bar bar
+keycode 47 = Shift_L
+keycode 50 = Escape BackSpace
+keycode 51 = Control_L
+keycode 52 = z Z asciitilde  less guillemotleft
+keycode 53 = x X slash greater guillemotright
+keycode 54 = c C semicolon cent copyright cent
+keycode 55 = v V colon V leftsinglequotemark
+keycode 57 = n N asciitilde N n N n
+keycode 58 = m M M mu masculine mu
+keycode 59 = comma less W horizconnector multiply horizconnector
 keycode 62 = Shift_R NoSymbol Shift_R
-keycode 48 = Return 
-keycode 61 = slash question slash question dead_belowdot dead_abovedot dead_belowdot
-keycode 64 = Mode_switch
-keycode 65 = space BackSpace space space BackSpace BackSpace
-keycode 66 = Escape BackSpace
-keycode 107 = Caps_Lock
+keycode 48 = colon semicolon apostrophe at
+keycode 49 = apostrophe at apostrophe at dead_circumflex dead_caron 
+keycode 50 = Control_L
+keycode 61 = Mode_switch
+keycode 64 = Alt_L
+keycode 65 = space NoSymbol space space BackSpace BackSpace
+keycode 66 = Return BackSpace BackSpace
+keycode 94 = Super_L NoSymbol backslash ISO_Level3_Shift
+keycode 107 = Menu 
 
 add control = Control_L
 add mod1 = Alt_L Meta_L Alt_L Meta_L
 ! add mod5 = Mode_switch 
+add mod4 = Super_L
 add Shift = Shift_L Shift_R
+
+keycode 998 = slash
+keycode 999 = Escape
+

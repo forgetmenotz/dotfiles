@@ -35,7 +35,7 @@
 
 ;;;;EXTRA FUNCTIONS: Enable numlock, scrolllock or capslock usage
 ;;(set-numlock! #t)
-;;(set-scrolllock! #t)
+(set-scrolllock! #t)
 ;;(set-capslock! #t)
 
 ;;;;; Scheme API reference
@@ -65,7 +65,20 @@
 ;; Examples of commands:
 
 ;;(xbindkey '(control shift q) "xbindkeys_show")
-
+(xbindkey '("m:0x83" "c:38") "i3-msg workspace prev")
+;; (xbindkey '("m:0x83" "c:39") "i3-msg workspace next")
+(xbindkey '("m:0x83" "c:40") "i3-msg workspace next")
+;; (xbindkey '("m:0x83" "c:41")
+;; (xbindkey '("m:0x83" "c:42")
+;; (xbindkey '("m:0x83" "c:43")
+(xbindkey '("m:0x83" "c:44") "i3-msg focus left")
+(xbindkey '("m:0x83" "c:45") "i3-msg focus down")
+(xbindkey '("m:0x83" "c:46") "i3-msg focus right")
+(xbindkey '("m:0x83" "c:31") "i3-msg focus up")
+(xbindkey '("m:0x83" "c:24") "i3-msg kill")
+(xbindkey '("m:0x83" "c:32") "dmenu_run")
+(xbindkey '("m:0x83" "c:57") "i3-switch-active-workspace-group")
+(xbindkey '("m:0x83" "c:58") "i3-assign-workspace-to-group")
 ;; set directly keycode (here control + f with my keyboard)
 ;;(xbindkey '("m:0x4" "c:41") "xterm")
 
@@ -79,7 +92,6 @@
 
 ;;    m:0x80 + c:108
 ;;    Mod5 + ISO_Level3_Shift
-;;(xbindkey '(ISO_Level3_Shift) "gnome-terminal")
 ;;(xbindkey '(release ISO_Level3_Shift) "gedit")
 ;;(xbindkey '("c:108") "xdotool keydown Shift_L")
 ;;(xbindkey '(Release mod5 "c:108") "xdotool keyup Shift_L Shift_R Control_L Control_R Meta_L Meta_R Alt_L Alt_R Super_L Super_R Hyper_L Hyper_R ISO_Level2_Latch ISO_Level3_Shift ISO_Level3_Latch ISO_Level3_Lock ISO_Level5_Shift ISO_Level5_Latch ISO_Level5_Lock")
@@ -92,41 +104,29 @@
 
 
 ;; Extra features
-(xbindkey-function '(control a)
-		   (lambda ()
-		     (display "Hello from Scheme!")
-		     (newline)))
-
-(xbindkey-function '(shift p)
-		   (lambda ()
-		     (run-command "gnome-terminal")))
 
 
-;; Double click test
-(xbindkey-function '(control w)
-		   (let ((count 0))
-		     (lambda ()
-		       (set! count (+ count 1))
-		       (if (> count 1)
-			   (begin
-			    (set! count 0)
-			    (run-command "xterm"))))))
+
+
+
+
+
 
 ;; Time double click test:
 ;;  - short double click -> run an xterm
 ;;  - long  double click -> run an rxvt
-(xbindkey-function '(shift w)
-		   (let ((time (current-time))
-			 (count 0))
-		     (lambda ()
-		       (set! count (+ count 1))
-		       (if (> count 1)
-			   (begin
-			    (if (< (- (current-time) time) 1)
-				(run-command "xterm")
-				(run-command "rxvt"))
-			    (set! count 0)))
-		       (set! time (current-time)))))
+;;(xbindkey-function '(shift w)
+;;	   (let ((time (current-time))
+;;		 (count 0))
+;;	     (lambda ()
+;;	       (set! count (+ count 1))
+;;	       (if (> count 1)
+;;		   (begin
+;;		    (if (< (- (current-time) time) 1)
+;;			(run-command "xterm")
+;;			(run-command "rxvt"))
+;;			    (set! count 0)))
+;;		       (set! time (current-time)))))
 
 
 ;; Chording keys test: Start differents program if only one key is
@@ -135,24 +135,23 @@
 ;; If key2 is pressed start cmd-k2
 ;; If both are pressed start cmd-k1-k2 or cmd-k2-k1 following the
 ;;   release order
-(define (define-chord-keys key1 key2 cmd-k1 cmd-k2 cmd-k1-k2 cmd-k2-k1)
-    "Define chording keys"
-  (let ((k1 #f) (k2 #f))
-    (xbindkey-function key1 (lambda () (set! k1 #t)))
-    (xbindkey-function key2 (lambda () (set! k2 #t)))
-    (xbindkey-function (cons 'release key1)
-		       (lambda ()
-			 (if (and k1 k2)
-			     (run-command cmd-k1-k2)
-			     (if k1 (run-command cmd-k1)))
-			 (set! k1 #f) (set! k2 #f)))
-    (xbindkey-function (cons 'release key2)
-		       (lambda ()
-			 (if (and k1 k2)
-			     (run-command cmd-k2-k1)
-			     (if k2 (run-command cmd-k2)))
-			 (set! k1 #f) (set! k2 #f)))))
-
+;;(define (define-chord-keys key1 key2 cmd-k1 cmd-k2 cmd-k1-k2 cmd-k2-k1)
+;;   "Define chording keys"
+;; (let ((k1 #f) (k2 #f))
+;;   (xbindkey-function key1 (lambda () (set! k1 #t)))
+;;   (xbindkey-function key2 (lambda () (set! k2 #t)))
+;;   (xbindkey-function (cons 'release key1)
+;;(lambda ()
+;;		 (if (and k1 k2)
+;;		     (run-command cmd-k1-k2)
+;;		     (if k1 (run-command cmd-k1)))
+;;		 (set! k1 #f) (set! k2 #f)))
+;;  (xbindkey-function (cons 'release key2)
+;;	       (lambda ()
+;;		 (if (and k1 k2)
+;;		     (run-command cmd-k2-k1)
+;;		     (if k2 (run-command cmd-k2)))
+;;		 (set! k1 #f) (set! k2 #f)))))
 
 ;; Example:
 ;;   Shift + b:1                   start an xterm
@@ -160,13 +159,13 @@
 ;;   Shift + b:1 then Shift + b:3  start gv
 ;;   Shift + b:3 then Shift + b:1  start xpdf
 
-(define-chord-keys '(shift "b:1") '(shift "b:3")
-  "xterm" "rxvt" "gv" "xpdf")
+ ;;(define-chord-keys '(shift "b:1") '(shift "b:3")
+ ;; "xterm" "rxvt" "gv" "xpdf")
 
 ;; Here the release order have no importance
 ;; (the same program is started in both case)
-(define-chord-keys '(alt "b:1") '(alt "b:3")
-  "gv" "xpdf" "xterm" "xterm")
+ ;;(define-chord-keys '(alt "b:1") '(alt "b:3")
+ ;; "gv" "xpdf" "xterm" "xterm")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

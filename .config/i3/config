@@ -42,6 +42,8 @@ bindsym $mod+o exec dmenu_run
 
 bindsym $mod+Shift+F1 exec setxkbmap 
 bindsym $mod+Shift+F2 exec /home/user/bin/xcapekeys.sh
+bindsym $mod+Shift+1 exec /home/user/bin/xvnc on
+bindsym $mod+Shift+2 exec /usr/bin/apon
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -55,10 +57,7 @@ bindsym $mod+l focus right
 
 #bindsym Control+h exec "i3_tmux_vim_focus left"
 #bindsym Control+j exec "i3_tmux_vim_focus down"
-
 #bindsym Control+l exec "i3_tmux_vim_focus right"
-
-
 
 bindsym $mod+a workspace prev
 bindsym $mod+apostrophe workspace next
@@ -101,7 +100,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+t floating toggle
 
 # change focus between tiling / floating windows
-#bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 # focus the parent container
 #bindsym $mod+a focus parent
 
@@ -121,39 +120,40 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-#set $exec_i3_groups exec --no-startup-id /home/user/.local/bin/i3-workspace-groups 
+set $exec_i3_groups exec --no-startup-id /home/user/.local/bin/i3-workspace-groups 
 
 # Switch active workspace group
-#bindsym $mod+g exec --no-startup-id /home/user/.local/bin/i3-switch-active-workspace-group 
+bindsym $mod+n exec --no-startup-id /home/user/.local/bin/i3-switch-active-workspace-group 
 # Move workspace to another group
-#bindsym $mod+Shift+g exec --no-startup-id /home/user/.local/bin/i3-assign-workspace-to-group
+bindsym $mod+m exec --no-startup-id /home/user/.local/bin/i3-assign-workspace-to-group
 #bindsym $mod+Shift+r exec --no-startup-id /home/user/.local/bin/i3-rename-workspace
 
-bindsym $mod+n exec /home/user/.cargo/bin/i3-workspace-groups focus-group
-bindsym $mod+Shift+n exec /home/user/.cargo/bin/i3-workspace-groups move-container-to-group
-bindsym $mod+Shift+Control+n exec /home/user/.cargo/bin/i3-workspace-groups rename-group
+#bindsym $mod+n exec /home/user/.cargo/bin/i3-workspace-groups focus-group
+#bindsym $mod+Shift+n exec /home/user/.cargo/bin/i3-workspace-groups move-container-to-group
 
-bindsym $mod+1 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 1
-bindsym $mod+2 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 2
-bindsym $mod+3 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 3
-bindsym $mod+4 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 4
-bindsym $mod+5 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 5
-bindsym $mod+6 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 6
-bindsym $mod+7 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 7
-bindsym $mod+8 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 8
-bindsym $mod+9 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 9
-bindsym $mod+0 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 10
+#bindsym $mod+Shift+Control+n exec /home/user/.cargo/bin/i3-workspace-groups rename-group
 
-#bindsym $mod+1 $exec_i3_groups workspace-number 1 --group-focused
-#bindsym $mod+2 $exec_i3_groups workspace-number 2 --group-focused
-#bindsym $mod+3 $exec_i3_groups workspace-number 3 --group-focused
-#bindsym $mod+4 $exec_i3_groups workspace-number 4 --group-focused
-#bindsym $mod+5 $exec_i3_groups workspace-number 5 --group-focused
-#bindsym $mod+6 $exec_i3_groups workspace-number 6 --group-focused
-#bindsym $mod+7 $exec_i3_groups workspace-number 7 --group-focused
-#bindsym $mod+8 $exec_i3_groups workspace-number 8 --group-focused
-#bindsym $mod+9 $exec_i3_groups workspace-number 9 --group-focused
-#bindsym $mod+0 $exec_i3_groups workspace-number 10 --group-focused
+#bindsym $mod+1 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 1
+#bindsym $mod+2 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 2
+#bindsym $mod+3 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 3
+#bindsym $mod+4 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 4
+#bindsym $mod+5 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 5
+#bindsym $mod+6 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 6
+#bindsym $mod+7 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 7
+#bindsym $mod+8 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 8
+#bindsym $mod+9 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 9
+#bindsym $mod+0 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 10
+
+bindsym $mod+0 $exec_i3_groups workspace-number 1 --group-focused
+bindsym $mod+2 $exec_i3_groups workspace-number 2 --group-focused
+bindsym $mod+3 $exec_i3_groups workspace-number 3 --group-focused
+bindsym $mod+4 $exec_i3_groups workspace-number 4 --group-focused
+bindsym $mod+5 $exec_i3_groups workspace-number 5 --group-focused
+bindsym $mod+6 $exec_i3_groups workspace-number 6 --group-focused
+bindsym $mod+7 $exec_i3_groups workspace-number 7 --group-focused
+bindsym $mod+8 $exec_i3_groups workspace-number 8 --group-focused
+bindsym $mod+9 $exec_i3_groups workspace-number 9 --group-focused
+bindsym $mod+0 $exec_i3_groups workspace-number 10 --group-focused
 
 #bindsym $mod+Shift+1 exec i3-workspace-groups move-container-to-workspace 1
 #bindsym $mod+Shift+2 exec i3-workspace-groups move-container-to-workspace 2
@@ -228,9 +228,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-bindsym $mod+comma exec ~/bin/vlcrewind
-bindsym $mod+period exec ~/bin/vlcforward
-bindsym $mod+slash exec ~/bin/vlcpause
+bindsym $mod+comma exec vrewind
+bindsym $mod+period exec vforward
+bindsym $mod+slash exec vpause
 
 #bindsym $mod+Shift+y mode "$mode_gaps" 
 
@@ -321,10 +321,15 @@ for_window [title="i3lemonbar"] floating enable
 # Application and script autoloading
 exec_always --no-startup-id feh --bg-scale /home/user/mine/pics/mountains.jpg
 exec_always --no-startup-id (nohup compton &)
-exec ~/bin/keyc modeleft
+exec ~/bin/keyc isomode
 exec_always --no-startup-id xset r rate 380 20
-exec gnome-terminal
 exec emacs --daemon
+exec guake
+exec xbindkeys
+exec ~/bin/display-switch on
+exec xterm -e "nohup sxhkd" &
+#exec systemctl --user start sxhkd #-c ~/.config/sxhkd/sxhkdrc
+
 #exec_always --no-startup-id"pkill -f \"autoname_workspace.py\"
 #exec_always --no-startup-id~/.i3/scripts/autoname_workspaces.py &
 #exec_always --no-startup-id ~/.config/polybar/launch.sh &
