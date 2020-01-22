@@ -1,0 +1,45 @@
+#!/bin/bash
+xrandr --dpi 220
+	if [ "$(wmctrl -m | grep Name | grep -o i3)" ]; then	
+		i3-msg restart
+	fi
+
+	# resolution 
+	xrandr --newmode "1872x1402_60.00"  221.75  1872 2008 2208 2544  1402 1405 1415 1453 -hsync +vsync
+	xrandr --addmode eDP-1 1872x1402_60.00
+	xrandr --output eDP-1 --mode 1872x1402_60.00
+
+	# fonts 
+	dconf write /com/gexperts/Tilix/profiles/default "'e9af265d-668d-4e4a-a344-5d7033a21854'"
+	dconf write /com/gexperts/Tilix/profiles/e9af265d-668d-4e4a-a344-5d7033a21854/font "'Source Code Pro 30'"
+
+}
+
+function LaptopSettings () {
+
+	# scaling
+	mv ~/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/transfer/	
+	if [ "$(echo $XDG_CURRENT_DESKTOP)" = "GNOME" ]; then
+		xdotool key "Alt+F2+r" && sleep 0.5 && xdotool key "Return"
+		keyc isomode
+	fi
+	gsettings set org.gnome.desktop.interface text-scaling-factor 1
+	xrandr --dpi 100
+	if [ "$(wmctrl -m | grep Name | grep -o i3)" ]; then	
+		i3-msg restart
+	fi
+	
+	# resolution
+	xrandr --output eDP-1 --mode 1366x768
+
+	# font
+	dconf write /com/gexperts/Tilix/profiles/default "'8c7693d3-9278-4575-b2d0-c08ecd8e3f86'"
+	dconf write /com/gexperts/Tilix/profiles/8c7693d3-9278-4575-b2d0-c08ecd8e3f86/font "'Source Code Pro 23'"
+
+}
+
+if [[ "$(xrandr | grep ' connected.*1366x768')" ]] || [[ $1 == "on" ]]; then
+	EinkSettings
+elif [[ "$(xrandr | grep ' connected.*1872x1402')" ]] || [[ $1 == "off" ]]; then 
+	LaptopSettings
+fi

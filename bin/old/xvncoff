@@ -1,0 +1,5 @@
+#!/bin/bash
+if [[ "$(pgrep -il x11vnc)" ]]; then
+	x11vnc -R stop
+	~/bin/vset off
+fi

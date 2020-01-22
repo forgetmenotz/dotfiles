@@ -1,0 +1,3 @@
+#!/bin/bash
+
+reflector --country "United Kingdom" --age 12 --protocol https --sort rate | sudo tee /etc/pacman.d/mirrorlist

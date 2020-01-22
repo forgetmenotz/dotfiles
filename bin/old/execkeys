@@ -1,0 +1,19 @@
+	if [ -f ~/mine/backup/xmodmap/$1 ]; then
+		if ! [ "$1" == "default" ]; then
+			cp ~/mine/backup/xmodmap/$1 ~/.Xmodmap
+		fi	
+		printf "loading $1 config...\n"
+		setxkbmap gb
+		if [ "$PS1" ]; then
+			printf "type slash and press enter"
+			read
+		else
+			echo success > ~/bin/tmp
+			fi
+		sleep 2	
+		xmodmap ~/.Xmodmap 
+		sleep 2
+		~/bin/ctrlesc.sh
+	else
+		printf "no config found.\n"
+	fi

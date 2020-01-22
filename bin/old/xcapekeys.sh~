@@ -1,0 +1,33 @@
+#!/bin/sh
+
+case $1 in
+	moderight)
+		xcape -e 'Control_L=Escape'
+		xcape -e 'Mode_switch=colon'
+		exit 0 ;;
+	modeleft)
+		xcape -e 'Control_L=Return'
+		xcape -e 'Mode_switch=Escape'
+		exit 0 ;;
+	altmodeleft)
+		xcape -e 'Control_L=Return'
+		xcape -e 'Mode_switch=Escape'
+		xcape -e 'ISO_Level3_Shift=colon'
+		exit 0 ;;
+	isomode)
+		xcape -s -e 'ISO_Level3_Shift=Return'
+		xcape -m -e 'Shift_L=Escape'
+		xcape -e 'Control_L=Escape'
+		xcape -e 'Mode_switch=colon'
+		exit 0 ;;
+	shiftmode)
+		xcape -s -e 'ISO_Level3_Shift=Return'
+		xcape -e 'Shift_L=Escape'
+		xcape -e 'Control_L=Escape'
+		exit 0 ;;
+	spacemode)
+		xcape -s -e 'Mode_switch=Return'
+		xcape -e 'Shift_L=Escape'
+		xcape -e 'ISO_Level3_Shift=space'
+		exit 0 ;;
+esac

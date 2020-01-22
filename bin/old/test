@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#!/bin/bash
+for pid in $(xdotool search --class "Tilix")
+do
+ xdotool key --window $pid Ctrl+1
+done

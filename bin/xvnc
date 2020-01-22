@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ $1 = "on" ]; then
+
+	# kill running x11vnc instances
+	if [[ "$(pgrep -il x11vnc)" ]]; then
+		x11vnc -R stop
+		sleep 1
+		wmctrl -c vncterm
+	fi
+
+	# and kill the terminal hosting Them
+	if [[ "$(wmctrl -l | grep vncterm)" ]]; then
+		wmctrl -a vncterm	
+		wmctrl -c vncterm
+	else
+		if [ "$(wmctrl -m | grep Name | grep -o i3)" ]; then
+			i3-workspace-groups focus-group xvnc
+		fi
+	fi
+
+	# set scaling and resolution for eink screen
+	~/bin/display-switch on
+
+	sleep 4
+
+	# run vnc in an identifiable terminal
+	xterm -T "vncterm" -hold -e "/usr/bin/x11vnc -display :0 -noxdamage -norc -auth guess -forever -autoport 5900 -rfbauth /home/user/.vnc/passwd"
+
+elif [ $1 = "off" ]; then
+	if [[ "$(pgrep -il x11vnc)" ]]; then
+		x11vnc -R stop
+		~/bin/display-switch off
+	fi
+
+fi

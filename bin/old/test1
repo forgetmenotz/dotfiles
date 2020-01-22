@@ -1,0 +1,10 @@
+#!/bin/bash
+
+p1="e9af265d-668d-4e4a-a344-5d7033a21854
+e9af265d-668d-4e4a-a344-5d7033a21854
+tilix-location="/com/gexperts/Tilix/profiles"
+if [ $1 = "low" ]; then
+	dconf write $tilix-location/$p1/font "'Source Code Pro 15'"
+elif [ $1 = "high" ]; then
+	dconf write /com/gexperts/Tilix/profiles//font "'Source Code Pro 30'"
+fi
