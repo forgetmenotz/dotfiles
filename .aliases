@@ -10,3 +10,4 @@ alias vunset='display-switch off'
 alias vpause='media-control vlcpause'
 alias vforward='media-control vlcforward'
 alias vrewind='media-control vlcrewind'
+alias resetsx=`kill -SIGUSR1 $(pgrep -il sxhkd | awk '{print $1}')`
