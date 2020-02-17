@@ -10,4 +10,6 @@ alias vunset='display-switch off'
 alias vpause='media-control vlcpause'
 alias vforward='media-control vlcforward'
 alias vrewind='media-control vlcrewind'
-alias resetsx=`kill -SIGUSR1 $(pgrep -il sxhkd | awk '{print $1}')`
+alias resetsxold=`kill -SIGUSR1 $(pgrep -il sxhkd | awk '{print $1}')`
+alias resetsx='killall sxhkd ; sleep 1 ; if ! [ $(pgrep -il sxhkd) ]; then i3-msg restart; sleep 1; pgrep -il sxhkd; fi'
+alias retmux='tmux source-file ~/.tmux.conf'

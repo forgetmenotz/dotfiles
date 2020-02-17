@@ -48,7 +48,7 @@ set relativenumber
 set number
 set noswapfile
 
-" Functions
+"" Functions
 function FindChar()
 	let c = nr2char( getchar() )
 	let match = search('\V' . c)
@@ -110,6 +110,8 @@ map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 map <leader>n :NERDTreeToggle<CR>
+map <PageUp> <C-u>
+map <PageDown> <C-d>
 let g:tmux_navigator_no_mappings = 1
 "nnoremap <silent> <C-j> :TmuxNavigateLeft<cr>
 "nnoremap <silent> <C-k> :TmuxNavigateDown<cr>
@@ -129,9 +131,11 @@ nnoremap <silent> <C-j> :wincmd h<cr>
 nnoremap <silent> <C-k> :wincmd j<cr>
 nnoremap <silent> <C-i> :wincmd k<cr>
 nnoremap <silent> <C-l> :wincmd l<cr>
+inoremap kj <Esc>
+" inoremap <Esc> <Nop>
 
 " Automatic commands
-autocmd InsertLeave * :call MyInsertEnterSettings()
-autocmd InsertEnter * :call MyInsertLeaveSettings()
-autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-autocmd BufWritePost *sxhkdrc !killall sxhkd; setsid sxhkd & 
+ autocmd InsertLeave * :call MyInsertEnterSettings()
+ autocmd InsertEnter * :call MyInsertLeaveSettings()
+ autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+ " autocmd BufWritePost *sxhkdrc !killall sxhkd; setsid sxhkd & 
