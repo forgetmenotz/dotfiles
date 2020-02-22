@@ -4,6 +4,8 @@ if [ -f ~/mine/backup/xmodmap/$1 ]; then
 	cp -v ~/mine/backup/xmodmap/$1 ~/.Xmodmap
 	setxkbmap gb
 	killall xcape
+	killall xcapemod
+	killall xcapespace
 	xmodmap ~/.Xmodmap
-	xcapekeys.sh $1
+	~/bin/xcapekeys.sh $1
 fi	

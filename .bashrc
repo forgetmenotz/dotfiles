@@ -16,6 +16,8 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
  source /etc/profile.d/vte.sh
 fi
 
+export $VISUAL="vim"
+
 bind '"C-u":"next-screen-line"'
 
 #if [ -f `which powerline-daemon` ]; then

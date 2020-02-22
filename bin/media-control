@@ -5,10 +5,10 @@
 if [ $1 = "vlcpause" ]; then
 	dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
-elif [ $1 = "vlcforward"; then
+elif [ $1 = "vlcforward" ]; then
 	dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:"10000000"
 
-elif [ $1 = "vlcrewind"; then
+elif [ $1 = "vlcrewind" ]; then
 	dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:"-10000000"
 
-
+fi

@@ -28,8 +28,14 @@ case $1 in
 		xcape -s -e 'Mode_switch=backslash'
 		exit 0 ;;
 	isomode)
-		xcape -s -e 'ISO_Level3_Shift=F21'
-		xcape -e 'Shift_L=Print'
+	  xcape -s -e 'ISO_Level3_Shift=KP_Subtract'
+		xcapemod -s -e 'Shift_L=Escape'
+		xcape -s -e 'Control_L=backslash'
+		xcape -s -e 'Mode_switch=Return'
+		exit 0 ;;
+	newmode)
+	  xcape -s -e 'ISO_Level3_Shift=KP_Subtract'
+		xcapemod -s -e 'Shift_L=KP_Add'
 		xcape -s -e 'Control_L=backslash'
 		xcape -s -e 'Mode_switch=Return'
 		exit 0 ;;
@@ -45,10 +51,10 @@ case $1 in
 		xcape -e 'Control_L=Escape'
 		exit 0 ;;
 	spacemode)
-		xcape -s -e 'ISO_Level3_Shift=Return'
-		xcape -s -e 'Super_L=space'
-		xcape -s -e 'Mode_switch=bar'
-		xcape -e 'Shift_L=Escape'
-		xcape -e 'Control_L=Escape'
+		xcape -s -e 'ISO_Level3_Shift=space'
+	  xcape -s -e 'Control_L=KP_Subtract'
+		xcapemod -s -e 'Shift_L=KP_Add'
+		xcape -s -e 'Super_L=backslash'
+		xcape -s -e 'Mode_switch=Return'
 		exit 0 ;;
 esac

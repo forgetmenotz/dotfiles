@@ -14,15 +14,22 @@ function EinkSettings () {
 		i3-msg restart
 	fi
 
-	# resolution 
-	xrandr --newmode "1872x1402_60.00"  221.75  1872 2008 2208 2544  1402 1405 1415 1453 -hsync +vsync
-	xrandr --addmode eDP-1 1872x1402_60.00
-	xrandr --output eDP-1 --mode 1872x1402_60.00
-
 	# fonts 
 	dconf write /com/gexperts/Tilix/profiles/default "'e9af265d-668d-4e4a-a344-5d7033a21854'"
 	dconf write /com/gexperts/Tilix/profiles/e9af265d-668d-4e4a-a344-5d7033a21854/font "'Source Code Pro 30'"
 
+}
+
+function VncSettings () {
+	# resolution 
+	xrandr --newmode "1872x1402_60.00"  221.75  1872 2008 2208 2544  1402 1405 1415 1453 -hsync +vsync
+	xrandr --addmode eDP-1 1872x1402_60.00
+	xrandr --output eDP-1 --mode 1872x1402_60.00 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --primary --mode 2104x1560 --pos 1872x0 --rotate normal
+}
+
+function MaxSettings () {
+	# resolution 
+	xrandr --output eDP-1 --mode 1366x768 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --primary --mode 2104x1560 --pos 1366x0 --rotate normal
 }
 
 function LaptopSettings () {
@@ -48,8 +55,12 @@ function LaptopSettings () {
 
 }
 
-if [[ "$(xrandr | grep ' connected.*1366x768')" ]] || [[ $1 == "on" ]]; then
+if [[ $1 == "max" ]]; then
 	EinkSettings
-elif [[ "$(xrandr | grep ' connected.*1872x1402')" ]] || [[ $1 == "off" ]]; then 
+	MaxSettings
+elif [[ $1 == "vnc" ]]; then
+	EinkSettings
+	VncSettings
+elif [[ $1 == "off" ]]; then 
 	LaptopSettings
 fi

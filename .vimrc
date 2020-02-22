@@ -64,8 +64,23 @@ function MyInsertLeaveSettings()
 	":hi CursorLine guibg=#5f87af  
 endfunction
 
+"function MyTabSettingsOn()
+"	:! i3-msg mode "default" 
+"	map Undo gT
+"	map Print gt	
+"	map q :call MyTabSettingsOff()
+"endfunction
+"
+"function MyTabSettingsOff()
+"	:! i3-msg mode "." 
+"	unmap Undo 
+"	unmap Print 
+"	" map "\<space>" :call MyTabSettingsOn()<CR>  
+"endfunction
+
 " Normal #mode mappings
-let mapleader="\<Space>"
+"let mapleader="\<Space>"
+let mapleader=","
 vnoremap i gk
 nnoremap i gk
 vnoremap k gj
@@ -106,6 +121,21 @@ nnoremap F q
 "nnoremap <C-d> 8j
 nnoremap <esc>j J
 nnoremap <leader>s s
+nmap <space> :call TabMode()<CR>
+nmap <kMinus> :tabprev<CR>
+nmap <kPlus> :tabnext<CR>
+
+function TabMode()
+command! -nargs=1 Blahde execute ':silent !'.<q-args> | execute ':redraw!'
+:Blahde i3-msg mode default > /dev/null &
+nmap <space> :call TabModeOff()<CR>
+endfunction
+
+function TabModeOff()
+:Blahde i3-msg mode . > /dev/null &
+nmap <space> :call TabMode()<CR>
+endfunction
+
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -135,7 +165,7 @@ inoremap kj <Esc>
 " inoremap <Esc> <Nop>
 
 " Automatic commands
- autocmd InsertLeave * :call MyInsertEnterSettings()
+ autocmd InsertLeave * call MyInsertEnterSettings()
  autocmd InsertEnter * :call MyInsertLeaveSettings()
  autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
  " autocmd BufWritePost *sxhkdrc !killall sxhkd; setsid sxhkd & 

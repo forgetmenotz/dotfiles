@@ -27,7 +27,7 @@ plugins=(history-substring-search)
 
 # vi mode
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=20
 bindkey -M vicmd 'kj' undefined-key
 
 function goto_start_then_insert(){
@@ -53,6 +53,9 @@ bindkey -M menuselect 'i' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'k' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+bindkey -s jj '\e'
+bindkey -s kj '\e'
+bindkey -s jk '\e'
 
 # Aliases
 source ~/.aliases
