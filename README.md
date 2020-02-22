@@ -8,3 +8,5 @@ resembling the ergonomics of a video controller, insofar as it uses the outermos
 edges (i.e. the shoulder buttons) for modifying functions central to the workflow. 
 Punctuation keys are remapped to metonymic layer, while shortcut binds should be
 organized in the manner of spacemacs, as the most memorable and extensive method.
+
+Not currently usable for others (due to the big mess and modified version of xcape).
