@@ -16,6 +16,8 @@ Plug 'sjbach/lusty'
 Plug 'dahu/vim-fanfingtastic'
 Plug 'chrisbra/colorizer'
 Plug 'haya14busa/incsearch.vim'
+Plug 'zefei/vim-wintabs'
+Plug 'gcmt/taboo.vim'
 "Plug 'joeytwiddle/vim-seek'
 call plug#end()
 
@@ -29,6 +31,7 @@ set tabstop=2
 set ignorecase
 let g:CommandTAlwaysShowDotFiles=1 
 let g:fanfingtastic_ignorecase = 1
+let g:wintabs_display = 'statusline'
 "let g:seek_multi_line = 1
 "let g:seek_noignorecase = 0
 let g:LustyJugglerSuppressRubyWarning = 1
@@ -121,20 +124,20 @@ nnoremap F q
 "nnoremap <C-d> 8j
 nnoremap <esc>j J
 nnoremap <leader>s s
-nmap <space> :call TabMode()<CR>
-nmap <kMinus> :tabprev<CR>
-nmap <kPlus> :tabnext<CR>
+"nmap <space> :call TabMode()<CR>
+"nmap <F5> :tabprev<CR>
+"nmap <F6> :tabnext<CR>
 
-function TabMode()
-command! -nargs=1 Blahde execute ':silent !'.<q-args> | execute ':redraw!'
-:Blahde i3-msg mode default > /dev/null &
-nmap <space> :call TabModeOff()<CR>
-endfunction
-
-function TabModeOff()
-:Blahde i3-msg mode . > /dev/null &
-nmap <space> :call TabMode()<CR>
-endfunction
+"function TabMode()
+"command! -nargs=1 Blahde execute ':silent !'.<q-args> | execute ':redraw!'
+":Blahde i3-msg mode default > /dev/null &
+"nmap <space> :call TabModeOff()<CR>
+"endfunction
+"
+"function TabModeOff()
+":Blahde i3-msg mode . > /dev/null &
+"nmap <space> :call TabMode()<CR>
+"endfunction
 
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)

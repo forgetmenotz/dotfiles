@@ -66,25 +66,34 @@
 (define-key Buffer-menu-mode-map (kbd "C-w l") 'evil-window-right)
 (define-key Buffer-menu-mode-map (kbd "<escape>") 'delete-window)
 (evil-make-overriding-map pdf-view-mode-map 'normal)
-;; (evil-define-key 'normal pdf-view-mode-map
- ;; "i" 'pdf-view-previous-page-command
- ;; "k" (lambda () (interactive) (pdf-view-next-line-or-next-page 5))
- ;; "i" (lambda () (interactive) (pdf-view-previous-line-or-previous-page 5))
- ;; "k" 'pdf-view-next-page-command)
-;; (general-evil-define-key 'normal pdf-view-mode-map
-;;  "j" (general-simulate-keys "p" t)
-;;  "k" (general-simulate-keys "C-n" t)
-;;  "i" (general-simulate-keys "C-p" t)
-;;  ;; alternatively to scroll more
-;;  "k" (general-simulate-keys "SPC" t)
-;;  "k" (general-simulate-keys "DEL" t)
-;;  "l" (general-simulate-keys "n" t))
+(define-key pdf-view-mode-map "k" 'pdf-view-next-page-command)
+(define-key pdf-view-mode-map "i" 'pdf-view-previous-page-command)
+(define-key pdf-view-mode-map "j" 'image-forward-hscroll)
+(define-key pdf-view-mode-map "l" 'image-backward-hscroll)
+(define-key pdf-view-mode-map "/" 'isearch-forward)
+(define-key pdf-view-mode-map "?" 'isearch-backward)
+(define-key pdf-view-mode-map "g" 'pdf-view-first-page)
+(define-key pdf-view-mode-map "G" 'pdf-view-last-page)
+(define-key pdf-view-mode-map "$" 'image-eol)
+(define-key pdf-view-mode-map "^" 'image-bol)
+(define-key pdf-view-mode-map "s" 'occur)
 (global-set-key (kbd "<escape>") 'top-level)
 (define-key minibuffer-local-map "<escape>" 'top-level)
 (define-key minibuffer-local-ns-map "<escape>" 'top-level)
 (define-key minibuffer-local-completion-map "<escape>" 'top-level)
 (define-key minibuffer-local-must-match-map "<escape>" 'top-level)
 (define-key minibuffer-local-isearch-map "<escape>" 'top-level)
+
+(defun noct:pdf-view-page-as-text ()
+	 "Inserts current pdf page into a buffer for keyboard selection."
+	 (interactive)
+	 (pdf-view-mark-whole-page)
+	 (pdf-view-kill-ring-save)
+	 (switch-to-buffer (make-temp-name "pdf-page"))
+	 (save-excursion
+	   (yank)))
+
+       (define-key pdf-view-mode-map "y" 'noct:pdf-view-page-as-text)
 
 (setq evil-motion-state-cursor 'box) ; █
  (setq evil-visual-state-cursor 'box) ; █

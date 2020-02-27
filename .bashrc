@@ -18,6 +18,19 @@ fi
 
 export $VISUAL="vim"
 
+# Go to parent directory.
+export FFF_KEY_PARENT1="j"
+# Scroll up/down.
+export FFF_KEY_SCROLL_DOWN1="k"
+export FFF_KEY_SCROLL_UP1="i"
+export FFF_LS_COLORS=0
+# Directory color [0-9]
+export FFF_COL1=1
+# Status background color [0-9]
+export FFF_COL2=5
+# Selection color [0-9] (copied/moved files)
+export FFF_COL3=6
+
 bind '"C-u":"next-screen-line"'
 
 #if [ -f `which powerline-daemon` ]; then

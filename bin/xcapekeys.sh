@@ -50,11 +50,18 @@ case $1 in
 		xcape -e 'Shift_L=Escape'
 		xcape -e 'Control_L=Escape'
 		exit 0 ;;
+	testmode)
+		xcape -s -e 'ISO_Level3_Shift=space'
+		#xcape -s -e 'Super_L=F8'
+		xcapemod -s -e 'Shift_L=F9'
+	  xcape -s -e 'Mode_switch=semicolon'
+		xcape -s -e 'Control_L=backslash'
+		exit 0 ;;
 	spacemode)
 		xcape -s -e 'ISO_Level3_Shift=space'
-	  xcape -s -e 'Control_L=KP_Subtract'
+	  xcape -s -e 'Mode_switch=KP_Subtract'
 		xcapemod -s -e 'Shift_L=KP_Add'
 		xcape -s -e 'Super_L=backslash'
-		xcape -s -e 'Mode_switch=Return'
+		xcape -s -e 'Control_L=Return'
 		exit 0 ;;
 esac

@@ -244,8 +244,8 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym space mode "."
+        bindsym Escape mode "."
         bindsym $mod+r mode "default"
 }
 
@@ -253,14 +253,25 @@ mode "modeswitch" {
 				bindsym Escape exec ~/bin/switchmode
 }
 
-bindsym Mod5+KP_Subtract exec tmux previous-window
-bindsym Mod5+KP_Add exec tmux next-window
-
 mode "." {
-bindsym KP_Subtract mode "switch" 
-bindsym KP_Add mode "switch"
-bindsym Mod5+KP_Subtract exec tmux previous-window
-bindsym Mod5+KP_Add exec tmux next-window
+#bindsym Mod5+KP_Subtract workspace prev_on_output
+#bindsym Mod5+KP_Add workspace next_on_output
+#bindsym Mod5+Help workspace prev_on_output
+#bindsym Mod5+Undo workspace next_on_output
+bindsym F8 mode "switch"
+bindsym F9 mode "switch"
+#bindsym semicolon mode "switch"
+#bindsym slash mode "switch"
+#bindsym Mod5+F8 exec tmux send-keys gT
+#bindsym Mod5+F9 exec tmux send-keys gt
+#bindsym Mod5+semicolon exec tmux previous-window
+#bindsym Mod5+slash exec tmux next-window
+
+#bindsym Mod5+F8 workspace prev_on_output
+#bindsym Mod5+F9 workspace next_on_output
+#bindsym Mod5+semicolon focus left
+#bindsym Mod5+slash focus right
+
 #bindsym Shift+KP_Subtract focus left
 #bindsym Shift+KP_Add focus right
 bindsym $mod+Shift+q kill
@@ -322,14 +333,17 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 }
 
 mode "switch" {
-				bindsym KP_Subtract workspace prev_on_output
-				bindsym KP_Add workspace next_on_output
-				bindsym Mod5+KP_Subtract exec tmux previous-window
-				bindsym Mod5+KP_Add exec tmux next-window
+				bindsym F8 workspace prev_on_output
+				bindsym F9 workspace next_on_output
+				#bindsym Mod5+F7
+				bindsym semicolon focus left
+				#bindsym Mod5+F8
+				bindsym slash focus right
+				#bindsym Mod5+Undo exec tmux previous-window
+				#bindsym Mod5+Help exec tmux next-window
 				bindsym space mode "."
+				bindsym Shift+r mode "resize"
 				bindsym r exec i3-rename-workspace
-				bindsym l exec tmux next-window
-				bindsym a exec tmux previous-window
 				#bindsym a exec ~/bin/iworkspace 0
 				#bindsym s exec ~/bin/iworkspace 1
 				#bindsym d exec ~/bin/iworkspace 2
@@ -402,7 +416,7 @@ bindsym $mod+r mode "resize"
 bar
 {
 	position top
-	status_command i3blocks -c "~/.config/i3/i3blocks.conf"
+	#status_command i3blocks -c "~/.config/i3/i3blocks.conf"
 	status_command i3status -c "~/.config/i3/i3status"
 	tray_output primary
 	font pango:Source Sans Pro-10 10
@@ -437,9 +451,11 @@ exec_always --no-startup-id (nohup compton &)
 exec ~/bin/keyc newmode
 exec_always --no-startup-id xset r rate 380 20
 exec emacs --daemon
+exec nm-applet
 exec guake
 #exec ~/bin/maxmonitor
 exec xbindkeys
 exec ~/bin/display-switch max
-exec i3-msg killall sxhkd ; xterm -e "nohup sxhkd" &
+exec xterm -e "nohup sxhkd" &
+#; xterm -e "nohup sxhkd" &
 exec_always ~/bin/modestart

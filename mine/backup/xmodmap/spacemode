@@ -40,10 +40,10 @@ keycode 43 = h H Home Home numbersign 6
 keycode 44 = j J Left Left bracketleft F29
 keycode 45 = k K Down Down braceright F30
 keycode 46 = l L Right Right bracketright F31
-keycode 47 = Shift_L 
+keycode 47 = Shift_L NoSymbol BackSpace 
 keycode 48 = Escape apostrophe apostrophe apostrophe apostrophe  
 keycode 49 = F13 grave 
-keycode 50 = Mode_switch 
+keycode 50 = Control_L 
 keycode 51 = BackSpace BackSpace BackSpace BackSpace
 keycode 52 = z Z F6 F6 0 F32
 keycode 53 = x X Delete exclam exclam F33
@@ -59,7 +59,7 @@ keycode 61 = slash question slash slash slash slash
 keycode 64 = Super_L
 keycode 65 = ISO_Level3_Shift ISO_Level3_Shift
 ! ISO_Level3_Shift space space Shift_L Shift_L 
-keycode 66 = Control_L BackSpace KP_Divide dollar KP_Divide KP_Divide  
+keycode 66 = Mode_switch BackSpace
 keycode 94 = Super_L bar bar bar bar bar    
 ! bar NoSymbol bar bar
 keycode 105 = BackSpace
