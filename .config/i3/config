@@ -252,14 +252,20 @@ mode "resize" {
 mode "modeswitch" {
 				bindsym Escape exec ~/bin/switchmode
 }
+bindsym Mod5+F8 workspace prev_on_output
+bindsym Mod5+F9 workspace next_on_output
+bindsym Mod5+F4 focus left
+bindsym Mod5+F3 focus right
 
 mode "." {
 #bindsym Mod5+KP_Subtract workspace prev_on_output
 #bindsym Mod5+KP_Add workspace next_on_output
-#bindsym Mod5+Help workspace prev_on_output
-#bindsym Mod5+Undo workspace next_on_output
-bindsym F8 mode "switch"
-bindsym F9 mode "switch"
+bindsym Mod5+F8 workspace prev_on_output
+bindsym Mod5+F9 workspace next_on_output
+bindsym Mod5+F4 focus left
+bindsym Mod5+F3 focus right
+#bindsym F8 mode "switch"
+#bindsym F9 mode "switch"
 #bindsym semicolon mode "switch"
 #bindsym slash mode "switch"
 #bindsym Mod5+F8 exec tmux send-keys gT
@@ -456,6 +462,6 @@ exec guake
 #exec ~/bin/maxmonitor
 exec xbindkeys
 exec ~/bin/display-switch max
-exec xterm -e "nohup sxhkd" &
+exec_always xterm -e "killall sxhkd; nohup sxhkd" &
 #; xterm -e "nohup sxhkd" &
 exec_always ~/bin/modestart

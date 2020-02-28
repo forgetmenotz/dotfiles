@@ -35,7 +35,7 @@ case $1 in
 		exit 0 ;;
 	newmode)
 	  xcape -s -e 'ISO_Level3_Shift=KP_Subtract'
-		xcapemod -s -e 'Shift_L=KP_Add'
+		xcapemodb -s -e 'Shift_L=KP_Add'
 		xcape -s -e 'Control_L=backslash'
 		xcape -s -e 'Mode_switch=Return'
 		exit 0 ;;
@@ -52,10 +52,10 @@ case $1 in
 		exit 0 ;;
 	testmode)
 		xcape -s -e 'ISO_Level3_Shift=space'
-		#xcape -s -e 'Super_L=F8'
-		xcapemod -s -e 'Shift_L=F9'
-	  xcape -s -e 'Mode_switch=semicolon'
-		xcape -s -e 'Control_L=backslash'
+		xcape -s -e 'Shift_R=F3'
+		xcape -e 'Shift_L=F9'
+	  xcape -s -e 'Mode_switch=backslash'
+		xcape -s -e 'Control_L=F4'
 		exit 0 ;;
 	spacemode)
 		xcape -s -e 'ISO_Level3_Shift=space'

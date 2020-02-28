@@ -6,6 +6,7 @@ if [ -f ~/mine/backup/xmodmap/$1 ]; then
 	killall xcape
 	killall xcapemod
 	killall xcapespace
+	killall xcapemodb
 	xmodmap ~/.Xmodmap
 	~/bin/xcapekeys.sh $1
 fi	

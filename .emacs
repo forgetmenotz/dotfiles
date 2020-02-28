@@ -15,7 +15,8 @@
 (add-to-list 'load-path (expand-file-name "~/elisp"))
 (pdf-tools-install)
 (require 'awesome-tab)
-(awesome-tab-mode t)
+(elscreen-start)
+;; (awesome-tab-mode t)
 (unless (display-graphic-p)
  (require 'evil-terminal-cursor-changer)
  (evil-terminal-cursor-changer-activate) ; or (etcc-on)
@@ -29,7 +30,7 @@
  '(frame-background-mode (quote light))
  '(package-selected-packages
    (quote
-    (evil-collection evil-terminal-cursor-changer nov evil))))
+    (elscreen-multi-term evil-collection evil-terminal-cursor-changer nov evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

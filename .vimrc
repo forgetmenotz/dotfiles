@@ -125,8 +125,8 @@ nnoremap F q
 nnoremap <esc>j J
 nnoremap <leader>s s
 "nmap <space> :call TabMode()<CR>
-"nmap <F5> :tabprev<CR>
-"nmap <F6> :tabnext<CR>
+nmap <F8> :tabprev<CR>
+nmap <F9> :tabnext<CR>
 
 "function TabMode()
 "command! -nargs=1 Blahde execute ':silent !'.<q-args> | execute ':redraw!'
