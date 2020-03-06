@@ -105,16 +105,26 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
+ prevdir="$(pwd)"
  tmp="$(mktemp)"
  lf -last-dir-path="$tmp" "$@"
  if [ -f "$tmp" ]; then
  dir="$(cat "$tmp")"
+ fi
  rm -f "$tmp"
- [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+ if [ -d "$dir" ]; then
+	if [ "$dir" != "$(pwd)" ]; then
+	 read -k 1 choosedir
+	 if [ "$choosedir" = "d" ]; then
+	  cd "$dir"
+	 else
+	  cd "$prevdir"
+	 fi 
+	fi
  fi
 }
 
-bindkey -s '^o' 'lfcd\n'
+#bindkey -s '^o' 'lfcd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line

@@ -77,8 +77,8 @@
 ;; (xbindkey '("m:0x83" "c:31") "i3-msg focus up")
 (xbindkey '("m:0x83" "c:24") "i3-msg kill")
 (xbindkey '("m:0x83" "c:26") "guake -t")
-#(xbindkey '("m:0x80" "c:61") "tmux send-keys gt")
-#(xbindkey '("m:0x80" "c:227") "tmux send-keys gT")
+;; (xbindkey '("m:0x80" "c:61") "tmux send-keys gt")
+;; (xbindkey '("m:0x80" "c:227") "tmux send-keys gT")
 (xbindkey '("m:0x81" "c:32") "dmenu_run")
 
 ;; (xbindkey '("m:0x83" "c:47") "i3-msg workspace next")

@@ -1,32 +1,10 @@
-# It will not be overwritten, so edit it as you like.
-#
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
-
 # i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 set $AltPath "/home/user/.cargo/bin" # for some reason $PATH isn't working
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# Font 
 font pango:monospace 10
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-#bindsym $mod+colon xdotool key "Return"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -36,14 +14,11 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+o exec dmenu_run
 
+# panic keys
 bindsym $mod+Shift+F1 exec setxkbmap 
 bindsym $mod+Shift+F2 exec /home/user/bin/xcapekeys.sh
 bindsym $mod+Shift+1 exec /home/user/bin/xvnc on
 bindsym $mod+Shift+2 exec /usr/bin/apon
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d ekxec --no-startup-id i3-dmenu-desktop
 
 #change focus
 bindsym $mod+j focus left
@@ -51,20 +26,15 @@ bindsym $mod+k focus down
 bindsym $mod+i focus up
 bindsym $mod+l focus right
 
-#bindsym Control+h exec "i3_tmux_vim_focus left"
-#bindsym Control+j exec "i3_tmux_vim_focus down"
-#bindsym Control+l exec "i3_tmux_vim_focus right"
+# preferred move/focus binds (bound to caps/semi/shiftL/slash)
+bindsym Mod5+F8 workspace prev           
+bindsym Mod5+F9 workspace next           
+bindsym Mod5+F4 focus left							 
+bindsym Mod5+F3 focus right							 
 
+# backup move/focus binds
 bindsym $mod+a workspace prev
-bindsym $mod+apostrophe workspace next
-##bindsym $mod+j workspace prev
 bindsym $mod+d workspace next
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -72,25 +42,16 @@ bindsym $mod+Shift+k move down
 bindsym $mod+Shift+i move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
+# split horizontally/vertically
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking #bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed 
 
 # toggle tiling / floating
 bindsym $mod+Shift+t floating toggle
@@ -116,30 +77,15 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Alias for i3-workspace-groups
 set $exec_i3_groups exec --no-startup-id /home/user/.local/bin/i3-workspace-groups
 
-# Switch active workspace group
+# Switch/move/rename workspace group
 bindsym $mod+n exec --no-startup-id i3-switch-active-workspace-group 
-# Move workspace to another group
 bindsym $mod+m exec --no-startup-id i3-assign-workspace-to-group
 #bindsym $mod+Shift+r exec --no-startup-id i3-rename-workspace DAADADAD
 
-#bindsym $mod+n exec /home/user/.cargo/bin/i3-workspace-groups focus-group
-#bindsym $mod+Shift+n exec /home/user/.cargo/bin/i3-workspace-groups move-container-to-group
-
-#bindsym $mod+Shift+Control+n exec /home/user/.cargo/bin/i3-workspace-groups rename-group
-
-#bindsym $mod+1 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 1
-#bindsym $mod+2 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 2
-#bindsym $mod+3 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 3
-#bindsym $mod+4 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 4
-#bindsym $mod+5 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 5
-#bindsym $mod+6 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 6
-#bindsym $mod+7 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 7
-#bindsym $mod+8 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 8
-#bindsym $mod+9 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 9
-#bindsym $mod+0 exec /home/user/.cargo/bin/i3-workspace-groups focus-workspace 10
-
+# Switch to specific workspace
 bindsym $mod+1 $exec_i3_groups workspace-number 1 --group-focused
 bindsym $mod+2 $exec_i3_groups workspace-number 2 --group-focused
 bindsym $mod+3 $exec_i3_groups workspace-number 3 --group-focused
@@ -151,84 +97,31 @@ bindsym $mod+8 $exec_i3_groups workspace-number 8 --group-focused
 bindsym $mod+9 $exec_i3_groups workspace-number 9 --group-focused
 bindsym $mod+0 $exec_i3_groups workspace-number 10 --group-focused
 
-#bindsym $mod+Shift+1 exec i3-workspace-groups move-container-to-workspace 1
-#bindsym $mod+Shift+2 exec i3-workspace-groups move-container-to-workspace 2
-#bindsym $mod+Shift+3 exec i3-workspace-groups move-container-to-workspace 3
-#bindsym $mod+Shift+4 exec i3-workspace-groups move-container-to-workspace 4
-#bindsym $mod+Shift+5 exec i3-workspace-groups move-container-to-workspace 5
-#bindsym $mod+Shift+6 exec i3-workspace-groups move-container-to-workspace 6
-#bindsym $mod+Shift+7 exec i3-workspace-groups move-container-to-workspace 7
-#bindsym $mod+Shift+8 exec i3-workspace-groups move-container-to-workspace 8
-#bindsym $mod+Shift+9 exec i3-workspace-groups move-container-to-workspace 9
-#bindsym $mod+Shift+0 exec i3-workspace-groups move-container-to-workspace 10
-
-#bindsym $mod+Shift+1 $exec_i3_groups move-to-number 1
-#bindsym $mod+Shift+2 $exec_i3_groups move-to-number 2
-#bindsym $mod+Shift+3 $exec_i3_groups move-to-number 3
-#bindsym $mod+Shift+4 $exec_i3_groups move-to-number 4
-#bindsym $mod+Shift+5 $exec_i3_groups move-to-number 5
-#bindsym $mod+Shift+6 $exec_i3_groups move-to-number 6
-#bindsym $mod+Shift+7 $exec_i3_groups move-to-number 7
-#bindsym $mod+Shift+8 $exec_i3_groups move-to-number 8
-#bindsym $mod+Shift+9 $exec_i3_groups move-to-number 9
-#bindsym $mod+Shift+0 $exec_i3_groups move-to-number 10
-
-#bindsym $mod+1 workspace number 1
-#bindsym $mod+2 workspace number 2
-#bindsym $mod+3 workspace number 3
-#bindsym $mod+4 workspace number 4
-#bindsym $mod+5 workspace number 5
-#bindsym $mod+6 workspace number 6
-#bindsym $mod+7 workspace number 7
-#bindsym $mod+8 workspace number 8
-#bindsym $mod+9 workspace number 9
-#bindsym $mod+0 workspace number 10
-
-# Switch to previous workspace in group.
-#bindsym $mod+p $exec_i3_groups workspace-prev
-# Switch to next workspace in group.
-#bindsym $mod+n $exec_i3_groups workspace-next
-
-# Move to previous workspace in group.
-#bindsym $mod+Shift+p $exec_i3_groups move-to-prev
-# Move to next workspace in group.
-#bindsym $mod+Shift+n $exec_i3_groups move-to-next
-#bindsym $mod+m exec --no-startup-id /home/user/.local/bin/i3-move-to-workspace
-
-
-# move focused container to workspace
-#bindsym $mod+Control+Shift+1 move container to workspace $ws1
-#bindsym $mod+Control+Shift+2 move container to workspace $ws2
-#bindsym $mod+Control+Shift+3 move container to workspace $ws3
-#bindsym $mod+Control+Shift+4 move container to workspace $ws4
-#bindsym $mod+Control+Shift+5 move container to workspace $ws5
-#bindsym $mod+Control+Shift+6 move container to workspace $ws6
-#bindsym $mod+Control+Shift+7 move container to workspace $ws7
-#bindsym $mod+Control+Shift+8 move container to workspace $ws8
-#bindsym $mod+Control+Shift+9 move container to workspace $ws9
-#bindsym $mod+Control+Shift+0 move container to workspace $ws10
-
-# reload the configuration file
+# reload/restart config / exit
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# raise/lower brightness
 bindsym XF86MonBrightnessUp exec "light -A -b 15"
 bindsym XF86MonBrightnessDown exec "light -U -b 15"
 bindsym Shift+XF86MonBrightnessUp exec "light -A -b 5"
 bindsym Shift+XF86MonBrightnessDown exec "light -U -b 5"
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# raise/lower/mute volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
 
+# rewind/forward/play vlc
 bindsym $mod+comma exec ~/bin/media-control vlcrewind
 bindsym $mod+period exec ~/bin/media-control vlcforward
 bindsym $mod+slash exec ~/bin/media-control vlcpause
 
-#bindsym $mod+Shift+y mode "$mode_gaps" 
+mode "volume" {
+bindsym u exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym d exec --no-startup-id pactl set-sink-volume 0 -5%
+}
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -244,170 +137,18 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym space mode "."
-        bindsym Escape mode "."
+        bindsym space mode "default"
+        bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 
-mode "modeswitch" {
-				bindsym Escape exec ~/bin/switchmode
-}
-bindsym Mod5+F8 workspace prev_on_output
-bindsym Mod5+F9 workspace next_on_output
-bindsym Mod5+F4 focus left
-bindsym Mod5+F3 focus right
-
-mode "." {
-#bindsym Mod5+KP_Subtract workspace prev_on_output
-#bindsym Mod5+KP_Add workspace next_on_output
-bindsym Mod5+F8 workspace prev_on_output
-bindsym Mod5+F9 workspace next_on_output
-bindsym Mod5+F4 focus left
-bindsym Mod5+F3 focus right
-#bindsym F8 mode "switch"
-#bindsym F9 mode "switch"
-#bindsym semicolon mode "switch"
-#bindsym slash mode "switch"
-#bindsym Mod5+F8 exec tmux send-keys gT
-#bindsym Mod5+F9 exec tmux send-keys gt
-#bindsym Mod5+semicolon exec tmux previous-window
-#bindsym Mod5+slash exec tmux next-window
-
-#bindsym Mod5+F8 workspace prev_on_output
-#bindsym Mod5+F9 workspace next_on_output
-#bindsym Mod5+semicolon focus left
-#bindsym Mod5+slash focus right
-
-#bindsym Shift+KP_Subtract focus left
-#bindsym Shift+KP_Add focus right
-bindsym $mod+Shift+q kill
-bindsym $mod+o exec dmenu_run
-bindsym $mod+Shift+F1 exec setxkbmap 
-bindsym $mod+Shift+F2 exec /home/user/bin/xcapekeys.sh
-bindsym $mod+Shift+1 exec /home/user/bin/xvnc on
-bindsym $mod+Shift+2 exec /usr/bin/apon
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+i focus up
-bindsym $mod+l focus right
-bindsym $mod+a workspace prev
-bindsym $mod+apostrophe workspace next
-bindsym $mod+d workspace next
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+i move up
-bindsym $mod+Shift+l move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-bindsym $mod+h split h
-bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
-bindsym $mod+w layout tabbed
-bindsym $mod+Shift+t floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+n exec --no-startup-id i3-switch-active-workspace-group 
-bindsym $mod+m exec --no-startup-id i3-assign-workspace-to-group
-bindsym $mod+1 $exec_i3_groups workspace-number 1 --group-focused
-bindsym $mod+2 $exec_i3_groups workspace-number 2 --group-focused
-bindsym $mod+3 $exec_i3_groups workspace-number 3 --group-focused
-bindsym $mod+4 $exec_i3_groups workspace-number 4 --group-focused
-bindsym $mod+5 $exec_i3_groups workspace-number 5 --group-focused
-bindsym $mod+6 $exec_i3_groups workspace-number 6 --group-focused
-bindsym $mod+7 $exec_i3_groups workspace-number 7 --group-focused
-bindsym $mod+8 $exec_i3_groups workspace-number 8 --group-focused
-bindsym $mod+9 $exec_i3_groups workspace-number 9 --group-focused
-bindsym $mod+0 $exec_i3_groups workspace-number 10 --group-focused
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym XF86MonBrightnessUp exec "light -A -b 15"
-bindsym XF86MonBrightnessDown exec "light -U -b 15"
-bindsym Shift+XF86MonBrightnessUp exec "light -A -b 5"
-bindsym Shift+XF86MonBrightnessDown exec "light -U -b 5"
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
-bindsym Mod5+Shift+u exec --no-startup-id pactl set-sink-volume 0 +5% 
-bindsym Mod5+Shift+d exec --no-startup-id pactl set-sink-volume 0 -5% 
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
-}
-
-mode "switch" {
-				bindsym F8 workspace prev_on_output
-				bindsym F9 workspace next_on_output
-				#bindsym Mod5+F7
-				bindsym semicolon focus left
-				#bindsym Mod5+F8
-				bindsym slash focus right
-				#bindsym Mod5+Undo exec tmux previous-window
-				#bindsym Mod5+Help exec tmux next-window
-				bindsym space mode "."
-				bindsym Shift+r mode "resize"
-				bindsym r exec i3-rename-workspace
-				#bindsym a exec ~/bin/iworkspace 0
-				#bindsym s exec ~/bin/iworkspace 1
-				#bindsym d exec ~/bin/iworkspace 2
-        #bindsym f exec ~/bin/iworkspace 3
-        #bindsym g exec ~/bin/iworkspace 4
-        #bindsym h exec ~/bin/iworkspace 5
-        #bindsym j exec ~/bin/iworkspace 6
-        #bindsym k exec ~/bin/iworkspace 7
-        #bindsym l exec ~/bin/iworkspace 8
-				bindsym n exec i3-switch-active-workspace-group 
-}
-
-mode "focus" {
-				bindsym j focus left
-				bindsym k focus down
-				bindsym i focus up
-				bindsym l focus right
-				bindsym a focus left
-				bindsym s focus down
-				bindsym w focus up
-				bindsym d focus right
-				bindsym KP_Subtract mode "switch"
-				bindsym KP_Add mode "switch"
-				bindsym m mode "move"
-				bindsym space mode "."
-}
-
-mode "move" {
-				bindsym j move left
-				bindsym k move down
-				bindsym i move up
-				bindsym l move right
-				bindsym a move left
-				bindsym s move down
-				bindsym w move up
-				bindsym d move right
-				bindsym space mode "."
-				bindsym KP_Subtract mode "switch"
-				bindsym KP_Add mode "switch"
-}
-
-mode "jump" {
-				bindsym a workspace prev
-				bindsym d workspace next
-				bindsym q exec ~/bin/iworkspace 0
-				bindsym w exec ~/bin/iworkspace 1 
-				bindsym e exec ~/bin/iworkspace 2
-				bindsym r exec ~/bin/iworkspace 3
-				bindsym t exec ~/bin/iworkspace 4
-				bindsym y exec ~/bin/iworkspace 5
-				bindsym u exec ~/bin/iworkspace 6
-				bindsym i exec ~/bin/iworkspace 7
-				bindsym o exec ~/bin/iworkspace 8
-				bindsym p exec ~/bin/iworkspace 9
-#				bindsym n exec --no-startup-id i3-switch-active-workspace-group; mode "default" 
-				bindsym m exec --no-startup-id i3-assign-workspace-to-group; mode "default"
+mode "dropterm" {
+				bindsym d exec dropterm bottom 
+				bindsym u exec dropterm top 
 				bindsym Escape mode "default"
+				bindsym space mode "default"
 }
+				
 												#border #backg  #foreg
 client.focused 					#230999 #FFFFFF #000000 #2E9EF4 #285577
 client.focused_inactive #252525 #5F676A #FFFFFF #484E50 #5F676A
@@ -454,14 +195,13 @@ bar
 # Application and script autoloading
 exec_always --no-startup-id feh --bg-scale /home/user/mine/pics/mountains.jpg
 exec_always --no-startup-id (nohup compton &)
-exec ~/bin/keyc newmode
-exec_always --no-startup-id xset r rate 380 20
+exec ~/bin/keyc nextmode
+#exec_always --no-startup-id xset r rate 380 20
 exec emacs --daemon
 exec nm-applet
 exec guake
 #exec ~/bin/maxmonitor
 exec xbindkeys
 exec ~/bin/display-switch max
-exec_always xterm -e "killall sxhkd; nohup sxhkd" &
+exec_always ~/bin/startsxhkd
 #; xterm -e "nohup sxhkd" &
-exec_always ~/bin/modestart

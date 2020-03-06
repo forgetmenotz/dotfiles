@@ -50,18 +50,26 @@ case $1 in
 		xcape -e 'Shift_L=Escape'
 		xcape -e 'Control_L=Escape'
 		exit 0 ;;
-	testmode)
+	spacemode)
 		xcape -s -e 'ISO_Level3_Shift=space'
 		xcape -s -e 'Shift_R=F3'
 		xcape -e 'Shift_L=F9'
-	  xcape -s -e 'Mode_switch=backslash'
+	  xcapespace -s -e 'Mode_switch=backslash'
 		xcape -s -e 'Control_L=F4'
 		exit 0 ;;
-	spacemode)
+	testmode)
 		xcape -s -e 'ISO_Level3_Shift=space'
-	  xcape -s -e 'Mode_switch=KP_Subtract'
-		xcapemod -s -e 'Shift_L=KP_Add'
-		xcape -s -e 'Super_L=backslash'
-		xcape -s -e 'Control_L=Return'
+		xcape -e 'Shift_L=F9'
+		xcape -e 'Shift_R=F3'
+	  xcape -s -e 'Mode_switch=F8'
+		xcape -s -e 'Super_L=F4'
+		xcapespace -s -e 'Control_L=backslash'
+		exit 0 ;;
+	nextmode)
+		xcape -s -e 'ISO_Level3_Shift=space'
+		xcape -s -e 'Shift_R=F3'
+		xcape -e 'Shift_L=F9'
+	  xcape -s -e 'Mode_switch=F4'
+		xcapespace -s -e 'Control_L=backslash'
 		exit 0 ;;
 esac

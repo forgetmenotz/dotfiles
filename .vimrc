@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugins')
 "Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'matze/vim-move'
 "Plug 'unblevable/quick-scope'
 Plug 'junegunn/seoul256.vim'
@@ -18,6 +17,7 @@ Plug 'chrisbra/colorizer'
 Plug 'haya14busa/incsearch.vim'
 Plug 'zefei/vim-wintabs'
 Plug 'gcmt/taboo.vim'
+Plug 'moll/vim-bbye'
 "Plug 'joeytwiddle/vim-seek'
 call plug#end()
 
@@ -50,6 +50,7 @@ set cursorline
 set relativenumber 
 set number
 set noswapfile
+set runtimepath+=~/.vim/bundle/bbye
 
 "" Functions
 function FindChar()
@@ -125,8 +126,10 @@ nnoremap F q
 nnoremap <esc>j J
 nnoremap <leader>s s
 "nmap <space> :call TabMode()<CR>
-nmap <F8> :tabprev<CR>
-nmap <F9> :tabnext<CR>
+imap <F9> <C-PageDown>
+imap <F8> <C-PageUp>
+nmap <F9> <C-PageDown>
+nmap <F8> <C-PageUp>
 
 "function TabMode()
 "command! -nargs=1 Blahde execute ':silent !'.<q-args> | execute ':redraw!'
@@ -138,7 +141,6 @@ nmap <F9> :tabnext<CR>
 ":Blahde i3-msg mode . > /dev/null &
 "nmap <space> :call TabMode()<CR>
 "endfunction
-
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -154,9 +156,9 @@ let g:tmux_navigator_no_mappings = 1
 nmap <F5> :windo set scrollbind!<cr>
 " Copy to X CLIPBOARD
 map <leader>cc :w !xsel -i -b<CR>
+vnoremap y "y :w !xsel -i -b<CR>"
 map <leader>cp :w !xsel -i -p<CR>
 map <leader>cs :w !xsel -i -s<CR>
-" Paste from X CLIPBOARD
 map <leader>pp :r!xsel -p<CR>
 map <leader>ps :r!xsel -s<CR>
 map <leader>pb :r!xsel -b<CR>

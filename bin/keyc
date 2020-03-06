@@ -3,10 +3,10 @@
 if [ -f ~/mine/backup/xmodmap/$1 ]; then
 	cp -v ~/mine/backup/xmodmap/$1 ~/.Xmodmap
 	setxkbmap gb
-	killall xcape
-	killall xcapemod
-	killall xcapespace
-	killall xcapemodb
+	lines="$(pgrep -il xcape | awk '{print $2}')"
+	while read -r line; do 
+		killall $line
+	done <<<"$lines"
 	xmodmap ~/.Xmodmap
 	~/bin/xcapekeys.sh $1
 fi	

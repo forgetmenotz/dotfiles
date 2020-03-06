@@ -1,0 +1,5 @@
+No keycodes found for keysym 65307.
+/home/user/bin/dropterm: line 15: syntax error near unexpected token `-t'
+/home/user/bin/dropterm: line 15: `				guake -t'
+/home/user/bin/dropterm: line 15: syntax error near unexpected token `-t'
+/home/user/bin/dropterm: line 15: `				guake -t'

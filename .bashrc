@@ -39,3 +39,23 @@ bind '"C-u":"next-screen-line"'
 # POWERLINE_BASH_SELECT=1
 # . /usr//lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
 #fi
+
+lfcd () {
+		prevdir="$(pwd)"
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+								read -n 1 choosedir
+								if [ "$choosedir" == "d" ]; then
+                cd "$dir"
+								elif [ "$choosedir" == "e" ]; then
+								cd "$prevdir"
+								fi
+            fi
+        fi
+    fi
+}
