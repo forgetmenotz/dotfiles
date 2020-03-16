@@ -52,10 +52,10 @@ case $1 in
 		exit 0 ;;
 	spacemode)
 		xcape -s -e 'ISO_Level3_Shift=space'
-		xcape -s -e 'Shift_R=F3'
+		xcape -s -e 'Shift_R=F8'
 		xcape -e 'Shift_L=F9'
-	  xcapespace -s -e 'Mode_switch=backslash'
-		xcape -s -e 'Control_L=F4'
+	  xcape -s -e 'Mode_switch=F3'
+		xcapespace -s -e 'Control_L=backslash'
 		exit 0 ;;
 	testmode)
 		xcape -s -e 'ISO_Level3_Shift=space'
@@ -67,9 +67,9 @@ case $1 in
 		exit 0 ;;
 	nextmode)
 		xcape -s -e 'ISO_Level3_Shift=space'
-		xcape -s -e 'Shift_R=F3'
+		xcape -s -e 'Shift_R=F4'
 		xcape -e 'Shift_L=F9'
-	  xcape -s -e 'Mode_switch=F4'
+	  xcape -s -e 'Mode_switch=F3'
 		xcapespace -s -e 'Control_L=backslash'
 		exit 0 ;;
 esac

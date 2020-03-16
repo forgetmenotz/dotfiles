@@ -1,9 +1,13 @@
 # Add to path
 #path+=/home/user/.cargo/bin
+path+=/home/user/.cabal/bin
+path+=/home/user/.local/bin
 
 # Enable colors and change prompt:
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+ZSH_THEME="avit"
 
 # History in cache directory:
 HISTSIZE=100000

@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugins')
-"Plug 'itchyny/lightline.vim'
 Plug 'matze/vim-move'
 "Plug 'unblevable/quick-scope'
 Plug 'junegunn/seoul256.vim'
@@ -28,7 +27,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set display+=lastline
 set hidden
 set tabstop=2
-set ignorecase
+set smartcase
 let g:CommandTAlwaysShowDotFiles=1 
 let g:fanfingtastic_ignorecase = 1
 let g:wintabs_display = 'statusline'
@@ -39,7 +38,7 @@ let g:LustyJugglerSuppressRubyWarning = 1
 " Colour settings
 "set background=dark
 "colorscheme onedark
-highlight CursorLine guibg=#F4F2F2 guifg=#FFF222
+"highlight CursorLine guibg=#F4F2F2 guifg=#FFF222
 "#303030
 highlight Cursor guibg=#626262
 hi LineNr ctermfg=grey guifg=#2b506e guibg= #FFF000
@@ -84,45 +83,45 @@ endfunction
 
 " Normal #mode mappings
 "let mapleader="\<Space>"
-let mapleader=","
+let mapleader="\\"
 vnoremap i gk
-nnoremap i gk
 vnoremap k gj
-nnoremap k gj
-onoremap i gk
-onoremap k gj
-nnoremap j <Left>
 vnoremap j <Left>
 vnoremap l <right>
-nnoremap l <right>
-onoremap j <Left>
-onoremap l <right>
-nnoremap o i
-nnoremap O i
-nnoremap h o
-nnoremap H O
 vnoremap o i
 vnoremap O i
 vnoremap h o
 vnoremap H O
+
+nnoremap i gk
+nnoremap k gj
+nnoremap j <Left>
+nnoremap l <right>
+nnoremap o i
+nnoremap O i
+nnoremap h o
+nnoremap H O
+
+onoremap j <Left>
+onoremap l <right>
+onoremap i gk
+onoremap k gj
 onoremap o i
 onoremap O i
 onoremap h o
 onoremap H O
 
-"let g:NERDTreeMapJumpNextSibling = "k"
-"let g:NERDTreeMapJumpPrevSibling = "i"
-"let g:NERDTreeMapOpenSplit = "h"
-"nmap <leader>q call Getcolumns<CR>
-nmap <leader>f :CommandTLine<CR>
+let NERDTreeMenuDown='k'
+let NERDTreeMenuUp='i'
+let NERDTreeMapOpenSplit='h'
+let NERDTreeMapActivateNode='<Space>'
+"nmap <leader>f :CommandTLine<CR>
 "nmap q <Plug>fanfingtastic_F
 nnoremap I <C-u>
 nnoremap K <C-d>
 "nmap q S
 nnoremap q F
 nnoremap F q
-"nnoremap <C-u> 8k 
-"nnoremap <C-d> 8j
 nnoremap <esc>j J
 nnoremap <leader>s s
 "nmap <space> :call TabMode()<CR>
@@ -130,6 +129,10 @@ imap <F9> <C-PageDown>
 imap <F8> <C-PageUp>
 nmap <F9> <C-PageDown>
 nmap <F8> <C-PageUp>
+imap <F3> <ESC>:WintabsPrevious<CR>
+imap <F4> <ESC>:WintabsNext<CR>
+nmap <F3> <ESC>:WintabsPrevious<CR>
+nmap <F4> <ESC>:WintabsNext<CR>
 
 "function TabMode()
 "command! -nargs=1 Blahde execute ':silent !'.<q-args> | execute ':redraw!'
@@ -147,16 +150,8 @@ map g/ <Plug>(incsearch-stay)
 map <leader>n :NERDTreeToggle<CR>
 map <PageUp> <C-u>
 map <PageDown> <C-d>
-let g:tmux_navigator_no_mappings = 1
-"nnoremap <silent> <C-j> :TmuxNavigateLeft<cr>
-"nnoremap <silent> <C-k> :TmuxNavigateDown<cr>
-"nnoremap <silent> <C-i> :TmuxNavigateUp<cr>
-"nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-"nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-nmap <F5> :windo set scrollbind!<cr>
 " Copy to X CLIPBOARD
 map <leader>cc :w !xsel -i -b<CR>
-vnoremap y "y :w !xsel -i -b<CR>"
 map <leader>cp :w !xsel -i -p<CR>
 map <leader>cs :w !xsel -i -s<CR>
 map <leader>pp :r!xsel -p<CR>

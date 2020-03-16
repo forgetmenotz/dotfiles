@@ -17,6 +17,8 @@ bindsym $mod+o exec dmenu_run
 # panic keys
 bindsym $mod+Shift+F1 exec setxkbmap 
 bindsym $mod+Shift+F2 exec /home/user/bin/xcapekeys.sh
+bindsym $mod+Shift+F3 exec autorandr --load docked
+bindsym $mod+Shift+F4 exec autorandr --load lapoff
 bindsym $mod+Shift+1 exec /home/user/bin/xvnc on
 bindsym $mod+Shift+2 exec /usr/bin/apon
 
@@ -26,15 +28,21 @@ bindsym $mod+k focus down
 bindsym $mod+i focus up
 bindsym $mod+l focus right
 
-# preferred move/focus binds (bound to caps/semi/shiftL/slash)
-bindsym Mod5+F8 workspace prev           
-bindsym Mod5+F9 workspace next           
-bindsym Mod5+F4 focus left							 
-bindsym Mod5+F3 focus right							 
-
-# backup move/focus binds
+# backup switch/focus binds
 bindsym $mod+a workspace prev
 bindsym $mod+d workspace next
+
+# switch/focus binds (remapped to caps/semi/shiftL/slash)
+bindsym Mod5+F8 workspace prev           
+bindsym Mod5+F9 workspace next          
+bindsym Mod5+F1 focus left							 
+bindsym Mod5+F2 focus right							 
+bindsym Shift+F5 focus left							 
+bindsym Shift+F6 focus right							 
+
+# switch tmux window
+bindsym Mod5+F3 exec tmux previous-window
+bindsym Mod5+F4 exec tmux next-window
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -121,6 +129,25 @@ bindsym $mod+slash exec ~/bin/media-control vlcpause
 mode "volume" {
 bindsym u exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym d exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym i exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym k exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym q mode "default"
+bindsym space mode "default"
+bindsym Escape mode "default"
+bindsym $mod+r mode "default"
+}
+
+mode "brightness" {
+bindsym u exec "light -A -b 5"
+bindsym d exec "light -U -b 5"
+bindsym i exec "light -A -b 5"
+bindsym k exec "light -U -b 5"
+bindsym Shift+u exec "light -A -b 15"
+bindsym Shift+d exec "light -U -b 15"
+bindsym q mode "default"
+bindsym space mode "default"
+bindsym Escape mode "default"
+bindsym $mod+r mode "default"
 }
 
 # resize window (you can also use the mouse for that)
@@ -143,12 +170,25 @@ mode "resize" {
 }
 
 mode "dropterm" {
-				bindsym d exec dropterm bottom 
-				bindsym u exec dropterm top 
+				bindsym d exec startdropterm bottom 
+				bindsym u exec startdropterm top 
+				bindsym Escape mode "default"
+				bindsym space mode "default"
+}
+
+mode "read" {
+
 				bindsym Escape mode "default"
 				bindsym space mode "default"
 }
 				
+mode "tmux" {
+				bindsym Mod5+F3 exec tmux swap-window -t -1
+				bindsym Mod5+F4 exec tmux swap-window -t +1
+				bindsym Escape mode "default"
+				bindsym space mode "default"
+}
+
 												#border #backg  #foreg
 client.focused 					#230999 #FFFFFF #000000 #2E9EF4 #285577
 client.focused_inactive #252525 #5F676A #FFFFFF #484E50 #5F676A
