@@ -1,0 +1,16 @@
+#!/bin/bash
+
+pipe=/tmp/testpipe
+guakeis="$(pgrep -il dropterm)"
+
+if [[ "$1" == "top" ]]; then
+	echo "top" >$pipe
+elif [[ "$1" == "bottom" ]]; then
+	echo "bottom" >$pipe
+elif [[ "$1" == "toggle" ]]; then
+	if [ $guakeis ]; then
+		echo "toggle" >$pipe
+	else
+		dropterm toggle &
+	fi
+fi
