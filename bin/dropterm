@@ -1,10 +1,11 @@
 #!/bin/bash
 
 ## open/hide guake with option to move to top/bottom 
-## i3 "mode" is used which waits 2 seconds for bind 
+## loop 2 seconds while i3 mode "dropterm" waits for binds
 
 valign="/apps/guake/general/window-valignment"
 
+# written to by ~/bin/startdropterm (will use one file in future)
 pipe=/tmp/testpipe
 guakeis="$(wmctrl -l | grep -o 'Guake!')"
 
@@ -21,34 +22,43 @@ if [[ "$1" == "toggle" ]]; then
 	fi
 fi
 
+# i3 mode which enables "d" and "u" binds to realign guake
 i3-msg mode "dropterm"
 
-timer="2"
+timer="3"
 startover="yes"
 
-	while [[ "$startover" == "yes" ]]; do
-		addtostartover="no"
-		read -t $timer line <> $pipe 
-		if [[ "$line" == "toggle" ]]; then
-			if [[ "$guakeis" ]]; then
-				guake --hide
-			else
-				guake --show
-			fi
-		elif [[ "$line" == "bottom" ]]; then
+while [[ "$startover" == "yes" ]]; do
+
+	# by default end loop 
+	stayornot="no"
+
+	read -t $timer line <> $pipe 
+
+	if [[ "$line" == "toggle" ]]; then
+		if [[ "$guakeis" ]]; then
 			guake --hide
-			dconf write $valign "1" 
-			dconf write /apps/guake/general/window-vertical-displacement "0" 
+		else
 			guake --show
-			addtostartover="yes" 
-		elif [[ "$line" == "top" ]]; then
-			guake --hide
-			dconf write $valign "0" 
-			dconf write /apps/guake/general/window-vertical-displacement "60" 
-			guake --show
-			addtostartover="yes" 
 		fi
-		startover="$addtostartover"
+
+	elif [[ "$line" == "bottom" ]]; then
+		guake --hide
+		dconf write $valign "1" 
+		dconf write /apps/guake/general/window-vertical-displacement "0" 
+		guake --show
+		stayornot="yes" 
+
+	elif [[ "$line" == "top" ]]; then
+		guake --hide
+		dconf write $valign "0" 
+		dconf write /apps/guake/general/window-vertical-displacement "60" 
+		guake --show
+		stayornot="yes" 
+	fi
+
+	# if $stayornot is yes repeat loop
+	startover="$stayornot"
 done
 
 i3-msg mode "default"
